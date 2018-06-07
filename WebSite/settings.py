@@ -29,7 +29,7 @@ DATABASES = {
         'NAME': 'oa',
         'USER': 'root',
         'PORT': '3306',
-        'HOST': '10.1.9.248',
+        'HOST': '127.0.0.1',
         'PASSWORD': 'root',
     }
 }

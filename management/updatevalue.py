@@ -40,8 +40,8 @@ class MysqlDB:
         finally:
             cursor.close()
 
-host = '192.168.1.9'
-password = 'Allin2018@prtg.com'
+host = '127.0.0.1'
+password = 'root'
 user = 'root'
 port = '3306'
 database = 'oa'
