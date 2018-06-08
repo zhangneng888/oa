@@ -80,7 +80,7 @@ class WrokOrdersAdmin(object):
         ),
         Side(
             Fieldset(('Status'),
-                     'is_finish'
+                     'is_finish','is_key_work',
                      ),
         )
     )
