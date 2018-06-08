@@ -65,7 +65,7 @@ class WrokOrdersAdmin(object):
     list_display = ['org_user', 'pro_type','pro_date','is_finish']
     search_fields = []
     readonly_fields = ['creator']
-    list_filter =  ['creator','is_finish','create_time','modified_time']
+    list_filter =  ['creator','is_finish','is_key_work','create_time','modified_time']
     exclude = ['org_dept']
     reversion_enable = True
     form_layout = (
