@@ -67,14 +67,15 @@ class DhcpBind(models.Model):
     name = models.CharField(max_length=20,verbose_name="姓名")
     judge = models.BooleanField(verbose_name="办公设备")
     state = models.BooleanField(verbose_name="使用中")
-    cmd = models.TextField(max_length=150,blank=True,null=True,verbose_name="命令")
+    cmd = models.TextField(max_length=300,blank=True,null=True,verbose_name="命令")
 
     def __str__(self):
          return "%s" % (self.ip)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        self.cmd = 'netsh dhcp server 192.168.1.222 scope %s add reservedip %s %s %s %s BOTH' \
-                   % (self.scope,self.ip,self.mac,self.describe,self.name)
+        self.cmd = '增加：\nnetsh dhcp server 192.168.1.222 scope %s add reservedip %s %s %s %s BOTH \n\n' \
+                   '删除：\nnetsh dhcp server 192.168.1.222 scope %s del reservedip %s %s %s %s BOTH' \
+                   % (self.scope,self.ip,self.mac,self.describe,self.name,self.scope,self.ip,self.mac,self.describe,self.name)
         super(DhcpBind, self).save(force_insert, force_update, using, update_fields)
 
     class Meta:

@@ -5,12 +5,14 @@
       <module fileurl="file://$PROJECT_DIR$/../Django-ERP-master/.idea/Django-ERP-master.iml" filepath="$PROJECT_DIR$/../Django-ERP-master/.idea/Django-ERP-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../DjangoOA/.idea/DjangoOA.iml" filepath="$PROJECT_DIR$/../DjangoOA/.idea/DjangoOA.iml" />
       <module fileurl="file://$PROJECT_DIR$/../DjangoX-master/.idea/DjangoX-master.iml" filepath="$PROJECT_DIR$/../DjangoX-master/.idea/DjangoX-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Flow/.idea/Flow.iml" filepath="$PROJECT_DIR$/../Flow/.idea/Flow.iml" />
       <module fileurl="file://$PROJECT_DIR$/../MxShop/.idea/MxShop.iml" filepath="$PROJECT_DIR$/../MxShop/.idea/MxShop.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Mxonline2-master/.idea/Mxonline2.iml" filepath="$PROJECT_DIR$/../Mxonline2-master/.idea/Mxonline2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../apps/.idea/apps.iml" filepath="$PROJECT_DIR$/../apps/.idea/apps.iml" />
       <module fileurl="file://$PROJECT_DIR$/../loonflow-master/.idea/loonflow-master.iml" filepath="$PROJECT_DIR$/../loonflow-master/.idea/loonflow-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../myproject/.idea/myproject.iml" filepath="$PROJECT_DIR$/../myproject/.idea/myproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oa.iml" filepath="$PROJECT_DIR$/.idea/oa.iml" />
+      <module fileurl="file://D:/worksweb/online-store/.idea/online-store.iml" filepath="D:/worksweb/online-store/.idea/online-store.iml" />
+      <module fileurl="file://D:/worksweb/vue/.idea/vue.iml" filepath="D:/worksweb/vue/.idea/vue.iml" />
       <module fileurl="file://$PROJECT_DIR$/../xadmin-master/.idea/xadmin-master.iml" filepath="$PROJECT_DIR$/../xadmin-master/.idea/xadmin-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../xadmin3.0/.idea/xadmin3.0.iml" filepath="$PROJECT_DIR$/../xadmin3.0/.idea/xadmin3.0.iml" />
     </modules>

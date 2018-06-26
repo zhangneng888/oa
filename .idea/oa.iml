@@ -21,8 +21,10 @@
     <orderEntry type="module" module-name="MxShop" />
     <orderEntry type="module" module-name="DjangoOA" />
     <orderEntry type="module" module-name="myproject" />
-    <orderEntry type="module" module-name="Flow" />
     <orderEntry type="module" module-name="loonflow-master" />
+    <orderEntry type="module" module-name="online-store" />
+    <orderEntry type="module" module-name="apps" />
+    <orderEntry type="module" module-name="vue" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
