@@ -25,6 +25,8 @@
     <orderEntry type="module" module-name="online-store" />
     <orderEntry type="module" module-name="apps" />
     <orderEntry type="module" module-name="vue" />
+    <orderEntry type="module" module-name="django-dhcp-admin-master" />
+    <orderEntry type="module" module-name="cmdb" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

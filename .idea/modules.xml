@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/../MxShop/.idea/MxShop.iml" filepath="$PROJECT_DIR$/../MxShop/.idea/MxShop.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Mxonline2-master/.idea/Mxonline2.iml" filepath="$PROJECT_DIR$/../Mxonline2-master/.idea/Mxonline2.iml" />
       <module fileurl="file://$PROJECT_DIR$/../apps/.idea/apps.iml" filepath="$PROJECT_DIR$/../apps/.idea/apps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cmdb/.idea/cmdb.iml" filepath="$PROJECT_DIR$/../cmdb/.idea/cmdb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../django-dhcp-admin-master/.idea/django-dhcp-admin-master.iml" filepath="$PROJECT_DIR$/../django-dhcp-admin-master/.idea/django-dhcp-admin-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../loonflow-master/.idea/loonflow-master.iml" filepath="$PROJECT_DIR$/../loonflow-master/.idea/loonflow-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../myproject/.idea/myproject.iml" filepath="$PROJECT_DIR$/../myproject/.idea/myproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oa.iml" filepath="$PROJECT_DIR$/.idea/oa.iml" />

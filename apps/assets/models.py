@@ -26,12 +26,24 @@ ASSETS_STATUS = (
     ('丢失', u"丢失"),
     ('维修', u"维修"),
 )
+class CostTypes(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50, blank=True, null=True, verbose_name="名称")
+    description = models.TextField(blank=True, null=True, verbose_name="描述")
+
+    def __str__(self):
+        return "%s" %(self.name)
+
+    class Meta:
+        verbose_name = "费用类型"
+        verbose_name_plural = verbose_name
 
 class PurchasingAsset(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, blank=True, null=True, verbose_name="资产名称")
     configuration = models.CharField(max_length=100, blank=True,null=True, verbose_name="规格参数")
     nums = models.DecimalField(max_digits=10, decimal_places=0, default=0, verbose_name="数量")
+    cost_types = models.ForeignKey(CostTypes,blank=True,null=True,related_name='purchasingasset_cost_types', verbose_name='费用类型')
     unit_price = models.DecimalField(max_digits=10, decimal_places=2, default=0, verbose_name="单价(元)")
     total_prices = models.DecimalField(max_digits=10, decimal_places=2, default=0, verbose_name="总价(元)")
     year = models.CharField(max_length=4, blank=True, null=True, verbose_name="保修年份")

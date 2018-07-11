@@ -1,8 +1,12 @@
 # -*- coding:utf-8 -*-
 from xadmin.layout import Fieldset, Main, Side, Row
-from models import Assets, Partner, Allocate,UserPrice,LowInventory,LowPrice,LowAllocate,VideoAssets,PurchasingAsset
+from models import Assets, Partner, Allocate,UserPrice,LowInventory,LowPrice,LowAllocate,VideoAssets,PurchasingAsset,CostTypes
 import xadmin
 # Register your models here.
+class CostTypesAdmin(object):
+    list_display = ['name', 'description']
+    reversion_enable = True
+xadmin.site.register(CostTypes, CostTypesAdmin)
 
 class PurchasingAssetAdmin(object):
     list_display = ["name", "configuration", "nums", "unit_price", "total_prices", "year", "applicaton_department",
@@ -17,6 +21,7 @@ class PurchasingAssetAdmin(object):
                      Row("applicaton_department", "applicants"),
                      Row("name", "apply_date"),
                      Row("configuration","nums"),
+                     Row("cost_types"),
                      Row("description"),
                      ),
             Fieldset("扩展信息",
