@@ -1,0 +1,6 @@
+*.pyc
+.idea/
+.vscode
+.DS_Store
+*.swp
+apps/*/migrations/0*.py
