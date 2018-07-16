@@ -11,6 +11,7 @@ xadmin.site.register(CostTypes, CostTypesAdmin)
 class PurchasingAssetAdmin(object):
     list_display = ["name", "configuration", "nums", "unit_price", "total_prices", "year", "applicaton_department",
                     "applicants", "purchase_date"]
+    list_editable = ["is_account"]
     search_fields = ['name']
     list_filter = ['name','is_arrival', 'is_account', 'is_purchase']
     readonly_fields = ['total_prices']
@@ -33,7 +34,7 @@ class PurchasingAssetAdmin(object):
         ),
         Side(
             Fieldset(('Status'),
-                     'is_arrival', 'is_account', 'is_purchase'
+                     'is_purchase', 'is_arrival', 'is_account'
                      ),
         )
     )

@@ -65,7 +65,7 @@ class PurchasingAsset(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.total_prices = self.unit_price * self.nums
-        if self.unit_price != 0:
+        if self.is_arrival == True:
             self.is_purchase = False
         super(PurchasingAsset, self).save(force_insert, force_update, using, update_fields)
 
