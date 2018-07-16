@@ -2,6 +2,7 @@
 from xadmin.layout import Fieldset, Main, Side, Row
 from models import Assets, Partner, Allocate,UserPrice,LowInventory,LowPrice,LowAllocate,VideoAssets,PurchasingAsset,CostTypes
 import xadmin
+from django.contrib import admin
 # Register your models here.
 class CostTypesAdmin(object):
     list_display = ['name', 'description']
@@ -38,6 +39,12 @@ class PurchasingAssetAdmin(object):
                      ),
         )
     )
+    actions = ['set_is_account']
+    def set_is_account(modeladmin, request, queryset):
+        selected = request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
+        PurchasingAsset.objects.filter(id__in=selected).update(is_account=True)
+    set_is_account.short_description = "设置所选内容为已报销"
+
 xadmin.site.register(PurchasingAsset, PurchasingAssetAdmin)
 
 class PartnerAdmin(object):
