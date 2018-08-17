@@ -62,7 +62,7 @@ class AllocateInline(object):
 
 class AssetsAdmin(object):
     list_display = ['num', 'name', 'get_accests_state', 'use_department', 'user']
-    search_fields = ['num','name', 'status','user__name']
+    search_fields = ['num','name', 'status','user__name','mac']
     list_filter = ['num', 'name', 'user', 'use_department', 'status']
     readonly_fields = ['num', 'old_num', 'status', 'residual_value']
     inlines = [AllocateInline]

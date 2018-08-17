@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     'itmanager',
     'workflow',
     'workorder',
+    'ycyy',
 )
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
