@@ -1,34 +1,34 @@
 # -*- coding:utf-8 -*-
-from models import Department, UserProfile,PurchasingAsset,Partner,Assets,Allocate
+from models import YcDepartment, YcUserProfile,YcPurchasingAsset,YcPartner,YcAssets,YcAllocate
 from xadmin.layout import Fieldset, Main, Side, Row
 import xadmin
 from django.contrib import admin
 # Register your models here.
 
-class DepartmentAdmin(object):
+class YcDepartmentAdmin(object):
     list_display = ['department']
     reversion_enable = True
-xadmin.site.register(Department, DepartmentAdmin)
+xadmin.site.register(YcDepartment, YcDepartmentAdmin)
 
-class UserProfileAdmin(object):
+class YcUserProfileAdmin(object):
     list_display = ['department','name','status','entry_date']
-    list_filter = ['status','department','name','status','entry_date']
+    list_filter = ['status']
     search_fields = ['name', 'email']
     reversion_enable = True
-xadmin.site.register(UserProfile, UserProfileAdmin)
+xadmin.site.register(YcUserProfile, YcUserProfileAdmin)
 
-class PartnerAdmin(object):
+class YcPartnerAdmin(object):
     list_display = ['partner', 'partner_head', 'partner_tel']
     search_fields = ['partner', 'partner_head', 'partner_tel']
     list_filter = ['partner', 'partner_head']
     ordering = ['id']
     reversion_enable = True
-xadmin.site.register(Partner, PartnerAdmin)
+xadmin.site.register(YcPartner, YcPartnerAdmin)
 
-class PurchasingAssetAdmin(object):
+class YcPurchasingAssetAdmin(object):
     list_display = ["name", "configuration", "nums", "unit_price", "total_prices", "year", "applicaton_department",
                     "applicants", "purchase_date"]
-    search_fields = ['name','mac']
+    search_fields = ['name']
     list_filter = ['name','is_arrival', 'is_account', 'is_purchase']
     readonly_fields = ['total_prices']
     reversion_enable = True
@@ -57,22 +57,22 @@ class PurchasingAssetAdmin(object):
 
     def set_is_account(modeladmin, request, queryset):
         selected = request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
-        PurchasingAsset.objects.filter(id__in=selected).update(is_account=True)
+        YcPurchasingAsset.objects.filter(id__in=selected).update(is_account=True)
 
     set_is_account.short_description = "设置所选内容为已报销"
-xadmin.site.register(PurchasingAsset, PurchasingAssetAdmin)
+xadmin.site.register(YcPurchasingAsset, YcPurchasingAssetAdmin)
 
-class AllocateInline(object):
-    model = Allocate
+class YcAllocateInline(object):
+    model = YcAllocate
     extra = 1
     style = 'table'
 
-class AssetsAdmin(object):
+class YcAssetsAdmin(object):
     list_display = ['num', 'assets_classes','name', 'get_accests_state', 'use_department', 'user']
     search_fields = ['num','name', 'status','user__name']
     list_filter = ['num', 'name', 'user', 'use_department', 'status']
     readonly_fields = ['num', 'status']
-    inlines = [AllocateInline]
+    inlines = [YcAllocateInline]
     reversion_enable = True
 
     form_layout = (
@@ -107,4 +107,4 @@ class AssetsAdmin(object):
             return u'<span style="color:orange;font-weight:bold">%s</span>' % (u"丢失",)
     get_accests_state.short_description = u'资产状态'
     get_accests_state.allow_tags = True
-xadmin.site.register(Assets, AssetsAdmin)
+xadmin.site.register(YcAssets, YcAssetsAdmin)

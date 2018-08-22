@@ -18,26 +18,26 @@ ASSETS_STATUS = (
     ('维修', u"维修"),
 )
 
-class Department(models.Model):
+class YcDepartment(models.Model):
     id = models.AutoField(primary_key=True)
-    department = models.CharField(max_length=25, verbose_name='部门')
-    create_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
-    modified_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
+    department = models.CharField(max_length=25, verbose_name="部门")
+    create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+    modified_time = models.DateTimeField(auto_now=True, verbose_name="修改时间")
 
     def __str__(self):
         return "%s" %(self.department)
 
     class Meta:
-        verbose_name = '银川部门管理'
+        verbose_name = "银川部门管理"
         verbose_name_plural = verbose_name
 
 
-class UserProfile(models.Model):
+class YcUserProfile(models.Model):
     STATUS = (
         ('在职', u"在职"),
         ('离职', u"离职"),
     )
-    department = models.ForeignKey(Department, blank=True, null=True, related_name='userprofile_department', verbose_name='部门')
+    department = models.ForeignKey(YcDepartment, blank=True, null=True, related_name="ycuserprofile_department", verbose_name='部门')
     name = models.CharField(max_length=25, blank=True, null=True, verbose_name='姓名')
     email = models.CharField(max_length=30, blank=True, null=True, verbose_name='邮件')
     tel = models.CharField(max_length=25, blank=True, null=True, verbose_name='电话')
@@ -52,7 +52,7 @@ class UserProfile(models.Model):
         verbose_name_plural = verbose_name
 
 
-class PurchasingAsset(models.Model):
+class YcPurchasingAsset(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, blank=True, null=True, verbose_name="资产名称")
     configuration = models.CharField(max_length=100, blank=True,null=True, verbose_name="配置参数")
@@ -80,14 +80,14 @@ class PurchasingAsset(models.Model):
         self.total_prices = self.unit_price * self.nums
         if self.is_arrival == True:
             self.is_purchase = False
-        super(PurchasingAsset, self).save(force_insert, force_update, using, update_fields)
+        super(YcPurchasingAsset, self).save(force_insert, force_update, using, update_fields)
 
     class Meta:
         verbose_name = "银川采购记录"
         verbose_name_plural = verbose_name
 
 
-class Partner(models.Model):
+class YcPartner(models.Model):
     id = models.AutoField(primary_key=True)
     partner = models.CharField(max_length=50, verbose_name='合作伙伴')
     partner_head = models.CharField(max_length=25, verbose_name='负责人')
@@ -103,7 +103,7 @@ class Partner(models.Model):
         verbose_name_plural = verbose_name
 
 
-class Assets(models.Model):
+class YcAssets(models.Model):
     id = models.AutoField(primary_key=True)
     num = models.CharField(max_length=25, blank=True, null=True, verbose_name='资产编号')
     assets_classes = models.CharField(max_length=25,default= '办公电脑', choices=ASSETS_TYPE, verbose_name='资产分类')
@@ -111,15 +111,15 @@ class Assets(models.Model):
     configuration = models.CharField(max_length=100, verbose_name='配置参数')
     sn = models.CharField(max_length=50, blank=True, null=True, verbose_name='SN')
     position = models.CharField(max_length=50, default='银川医院', verbose_name='存放位置')
-    purchaser = models.ForeignKey(UserProfile,default=55,related_name='assets_purchaser', verbose_name='采购人')
+    purchaser = models.ForeignKey(YcUserProfile,default=55,related_name='ycassets_purchaser', verbose_name='采购人')
     purchase_date = models.DateField(verbose_name='采购日期')
-    partnet = models.ForeignKey(Partner, verbose_name='供应商')
+    partnet = models.ForeignKey(YcPartner, verbose_name='供应商')
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2, default=0, verbose_name='采购价格(元)')
-    applicaton_department = models.ForeignKey(Department, related_name='assets_applicaton_department', verbose_name='申请部门')
-    applicants = models.ForeignKey(UserProfile, related_name='assets_applicants', verbose_name='申请人')
+    applicaton_department = models.ForeignKey(YcDepartment, related_name='ycassets_applicaton_department', verbose_name='申请部门')
+    applicants = models.ForeignKey(YcUserProfile, related_name='ycassets_applicants', verbose_name='申请人')
     status = models.CharField(max_length=25, default= '入库',choices=ASSETS_STATUS, verbose_name='资产状态')
-    use_department = models.ForeignKey(Department, related_name='assets_use_department', blank=True, null=True, verbose_name='使用部门')
-    user = models.ForeignKey(UserProfile, related_name='assets_user', blank=True, null=True, verbose_name='使用人')
+    use_department = models.ForeignKey(YcDepartment, related_name='ycassets_use_department', blank=True, null=True, verbose_name='使用部门')
+    user = models.ForeignKey(YcUserProfile, related_name='ycassets_user', blank=True, null=True, verbose_name='使用人')
     description = models.TextField(blank=True, null=True, verbose_name='备注')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modified_time = models.DateTimeField(auto_now=True, verbose_name='修改时间')
@@ -128,7 +128,7 @@ class Assets(models.Model):
         return "%s" %(self.num)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        super(Assets, self).save(force_insert, force_update, using, update_fields)
+        super(YcAssets, self).save(force_insert, force_update, using, update_fields)
         if not self.num:
             self.num = 'YC%06d' % (self.id)
             self.save()
@@ -138,13 +138,13 @@ class Assets(models.Model):
         verbose_name_plural = verbose_name
 
 
-class Allocate(models.Model):
+class YcAllocate(models.Model):
     id = models.AutoField(primary_key=True)
-    num = models.ForeignKey(Assets, related_name='allocate_num', verbose_name='资产编号')
+    num = models.ForeignKey(YcAssets, related_name='ycallocate_num', verbose_name='资产编号')
     status = models.CharField(max_length=25, choices=ASSETS_STATUS, verbose_name='维护类型')
     allocate_date = models.DateField(verbose_name='维护日期')
-    use_department = models.ForeignKey(Department, related_name='allocate_use_department', blank=True, null=True, verbose_name='使用部门')
-    user = models.ForeignKey(UserProfile,related_name='allocate_user', blank=True, null=True, verbose_name='使用人')
+    use_department = models.ForeignKey(YcDepartment, related_name='ycallocate_use_department', blank=True, null=True, verbose_name='使用部门')
+    user = models.ForeignKey(YcUserProfile,related_name='ycallocate_user', blank=True, null=True, verbose_name='使用人')
     description = models.CharField(max_length=300, blank=True, null=True, verbose_name='备注')
     create_time = models.DateTimeField(auto_now_add=True,blank=True, null=True, verbose_name='创建时间')
     modified_time = models.DateTimeField(auto_now=True, blank=True, null=True, verbose_name='修改时间')
@@ -153,13 +153,13 @@ class Allocate(models.Model):
         return "%s%s" % (self.user, self.status)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        super(Allocate, self).save(force_insert, force_update, using, update_fields)
+        super(YcAllocate, self).save(force_insert, force_update, using, update_fields)
         if self.status == '归还':
-            sql = 'UPDATE ycyy_assets SET status = %s, use_department_id = Null, user_id = Null WHERE id=%s'
+            sql = 'UPDATE ycyy_ycassets SET status = %s, use_department_id = Null, user_id = Null WHERE id=%s'
             params = [self.status, self.num_id]
             generic.update(sql, params)
         elif self.status != '归还':
-            sql = 'UPDATE ycyy_assets SET status = %s, use_department_id = %s, user_id = %s WHERE id=%s'
+            sql = 'UPDATE ycyy_ycassets SET status = %s, use_department_id = %s, user_id = %s WHERE id=%s'
             params = [self.status, self.use_department_id, self.user_id, self.num_id]
             generic.update(sql, params)
 
