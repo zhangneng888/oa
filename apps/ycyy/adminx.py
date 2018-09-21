@@ -84,7 +84,7 @@ class YcAssetsAdmin(object):
                      Row("purchaser", "purchase_date"),
                      Row("applicaton_department", "applicants"),
                      Row("use_department", "user"),
-                     Row("purchase_price","purchase_date"),
+                     Row("purchase_price"),
                      Row("partnet","position"),
                      Row("description"),
                      ),
