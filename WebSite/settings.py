@@ -1,4 +1,5 @@
 # Django settings for wictrl project.
+# -*- coding:utf-8 -*-
 import sys
 import os.path
 from django.utils import six
@@ -35,6 +36,8 @@ DATABASES = {
 }
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+# 开发环境下将DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Local time zone for this installation. Choices can be found here:
